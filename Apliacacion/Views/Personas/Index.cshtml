@@ -1,0 +1,46 @@
+﻿@model List<App.Dominio.Entidades.Personas>
+@{
+    ViewBag.Title = "LISTADO";
+}
+
+
+<div class="row form-row-center-t">
+    <div class="col-lg-12">
+        <div class="card form-table-gn ">
+            <div class="card-header text-center">@ViewBag.Title</div>
+            <div class="card-body">
+                <hr />
+                <table class="table table-hover table-responsive">
+                    <thead>
+                        <tr class="bg-success text-center">
+                            <td>ID</td>
+                            <td>Nombre Completo</td>
+                            <td>Fecha de Nacimiento</td>
+                            <td>Modificar</td>
+                            <td>Eliminar</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var persona in Model)
+                        {
+                            <tr class="bg-info text-center">
+                                <td>@persona.ID</td>
+                                <td>@persona.Nombre</td>
+                                <td>@persona.FechaDeNacimiento</td>
+                                <td>
+                                    <a class="btn btn-warning boton-table-gn" href="@Url.Action("Update", new {Id = persona.ID })">Modificar</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger boton-table-gn" href="@Url.Action("Delete", new {Id = persona.ID })">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <hr />
+            </div>
+        </div>
+    </div>
+</div>
+
+

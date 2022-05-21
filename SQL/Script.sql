@@ -1,0 +1,66 @@
+/*BASE DE DATOS DE PRACTICA 
+--NOMBRE DE LA BASE DE DATOS 
+--GREGORYPRUEBA
+--TABLA QUE CONTIENE LA BASE DE DATO
+--PERSONAS
+*/
+
+CREATE DATABASE GREGORYPRUEBA
+GO
+USE GREGORYPRUEBA
+GO
+--TABLA PERSONAS
+CREATE TABLE Personas
+(
+ID INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(50) NOT NULL,
+FechaDeNacimiento DATETIME NOT NULL
+)
+GO
+--PROCEDIMIENTO ALMACENADOS
+
+--PROCEDIMIENTO INSERT
+CREATE PROC pro_InsertPersona
+(
+@Nombre VARCHAR(50),
+@FechaNacimiento DATETIME
+)
+AS BEGIN 
+
+INSERT INTO Personas (Nombre, FechaNacimiento)
+VALUES(@Nombre, @FechaNacimiento)
+
+END
+GO
+--PROCEDIMIENTO UPDATE
+CREATE PROC pro_UpdatePersona
+(
+@PersonaId INT,
+@Nombre VARCHAR(50),
+@FechaNacimiento DATETIME
+)
+AS BEGIN
+
+UPDATE Personas SET Nombre = @Nombre, FechaNacimiento = @FechaNacimiento 
+WHERE PersonaId = @PersonaId
+
+END
+GO
+--PROCEDIMIENTO SELECT
+CREATE PROC pro_SelectPersona
+AS BEGIN
+SELECT * FROM Personas
+END
+GO
+--PROCEDIMIENTO BUSCAR POR ID
+CREATE PROC pro_SelectPersonaId
+(
+@PersonaId INT
+)
+AS BEGIN
+
+SELECT * FROM Personas WHERE PersonaId = @PersonaId
+
+END
+
+SELECT * FROM Personas

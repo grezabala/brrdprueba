@@ -1,0 +1,48 @@
+﻿@model App.Dominio.Entidades.Personas
+
+@{
+    ViewBag.Title = "FORMULARIO MODIFICAR";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card form-update-gn">
+                <div class="card-header text-center">@ViewBag.Title</div>
+                <div class="card-body">
+                    <div class="form-horizontal">
+                        <div class="col-lg-12">
+                            @Html.ValidationSummary(true, "", new { @lcass = "text-danger" })
+                            @Html.HiddenFor(m => m.ID)
+                        </div>
+
+                        <div class="form-group row">
+                            <hr />
+                            @Html.LabelFor(m => m.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-sm-4 mb-2 mb-sm-0">
+                                @Html.EditorFor(m => m.Nombre, new { htmlAttributes = new { @class = "form-control form-border-gn" } })
+                                @Html.ValidationMessageFor(m => m.Nombre, null, new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(m => m.FechaDeNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-sm-4">
+                                @Html.EditorFor(m => m.FechaDeNacimiento, new { htmlAttributes = new { @class = "form-control form-border-gn", type = "date" } })
+                                @Html.ValidationMessageFor(m => m.FechaDeNacimiento, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="boton-center-gn">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-success form-boton-gn">GUARDAR CAMBIO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>
+}
+
